@@ -1,2 +1,3 @@
 #!/bin/bash
-echo "$1" | base64 --decode | xxd -r -p | xxd -p -c 256 | tr -d '\n'
+echo "$1" | base64 --decode | perl -lne 'print pack("H*", $_ ^ 0x3a)' 
+
