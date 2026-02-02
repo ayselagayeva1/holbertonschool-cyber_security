@@ -1,10 +1,2 @@
 #!/bin/bash
-
-if [ -z "$1" ]; then
-  echo "Usage: $0 <password>"
-  exit 1
-fi
-
-echo -n "$1" | sha1sum | awk '{print $1}' > 0_hash.txt
-
-echo "Password hash has been saved to 0_hash.txt."
+echo -n "$1" | sha1sum | cut -d' ' -f1 > 0_hash.txt
